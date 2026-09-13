@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
-
 * {
     margin: 0;
     padding: 0;
@@ -8,143 +6,182 @@
 }
 
 body {
-    background-color: #0b0b0f;
-    color: #f3f4f6;
-    min-height: 100vh;
-    overflow-x: hidden;
+    background: #05050a;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
 }
 
-/* Subtle Ambient Background Lighting */
-.ambient-glow {
-    position: fixed;
-    top: -200px;
+/* Ambient Background Glow */
+body::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.05) 60%, transparent 80%);
+    filter: blur(100px);
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%);
-    filter: blur(80px);
+    transform: translate(-50%, -50%);
     z-index: -1;
     pointer-events: none;
 }
 
-header {
-    text-align: center;
-    padding: 60px 20px 30px;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #f472b6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 8px;
-}
-
-header p {
-    color: #9ca3af;
-    font-size: 1rem;
-    font-weight: 300;
-}
-
-/* Pinterest Style Masonry Grid Container */
-.pinterest-grid {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 20px 30px 80px;
-    column-count: 3;
-    column-gap: 24px;
-}
-
-@media (max-width: 1024px) {
-    .pinterest-grid { column-count: 2; }
-}
-@media (max-width: 640px) {
-    .pinterest-grid { column-count: 1; padding: 10px 15px 50px; }
-}
-
-/* Pin Card Styling */
-.pin-card {
-    break-inside: avoid;
-    margin-bottom: 24px;
-    border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    background: #14141f;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
-}
-
-.pin-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
-    border-color: rgba(168, 85, 247, 0.3);
-}
-
-.pin-image-wrapper {
+main {
     position: relative;
     width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 
-.pin-card img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.pin-card:hover img {
-    transform: scale(1.04);
-}
-
-/* Pinterest Style Overlay on Hover */
-.pin-overlay {
+.slider {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(5, 5, 10, 0.85) 0%, rgba(5, 5, 10, 0.2) 50%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 24px;
+    list-style: none;
 }
 
-.pin-card:hover .pin-overlay {
-    opacity: 1;
+.item {
+    position: absolute;
+    width: 240px;
+    height: 350px;
+    top: 58%;
+    transform: translateY(-50%);
+    left: 70%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: brightness(0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.pin-title {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
+/* Active Main Slide */
+.item:nth-child(1),
+.item:nth-child(2) {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateY(0);
+    border-radius: 0;
+    box-shadow: none;
+    filter: brightness(1);
+    border: none;
 }
 
-.pin-desc {
-    font-size: 0.85rem;
+/* Next Stacked Cards preview on the right */
+.item:nth-child(3) { left: calc(70% - 220px); }
+.item:nth-child(4) { left: calc(70% + 30px); }
+.item:nth-child(5) { left: calc(70% + 280px); }
+.item:nth-child(n+6) { left: 120%; opacity: 0; pointer-events: none; }
+
+/* Glassmorphism Content Box */
+.item .content {
+    position: absolute;
+    top: 50%;
+    left: 80px;
+    width: 480px;
+    transform: translateY(-50%);
+    display: none;
+    background: rgba(10, 10, 20, 0.7);
+    padding: 45px;
+    border-radius: 24px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    animation: fadeSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.item:nth-child(2) .content {
+    display: block;
+}
+
+@keyframes fadeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(-40%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%);
+    }
+}
+
+.content .title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #fff 30%, #c7d2fe 70%, #f472b6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+.content .description {
+    line-height: 1.7;
     color: #cbd5e1;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
     font-weight: 300;
 }
 
-.pin-badge {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: rgba(10, 10, 20, 0.6);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 5px 12px;
-    border-radius: 30px;
-    font-size: 0.7rem;
+.content button {
+    padding: 14px 32px;
+    border: none;
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: white;
+    border-radius: 50px;
     font-weight: 600;
-    color: #c7d2fe;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.content button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(168, 85, 247, 0.4);
+}
+
+/* Navigation Buttons */
+.nav {
+    position: absolute;
+    bottom: 50px;
+    right: 80px;
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.nav .btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 22px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.nav .btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.08);
+}
+
+@media (max-width: 768px) {
+    .item .content {
+        left: 20px;
+        width: calc(100% - 40px);
+        padding: 25px;
+    }
+    .content .title { font-size: 1.8rem; }
+    .nav { right: 20px; bottom: 20px; }
 }
