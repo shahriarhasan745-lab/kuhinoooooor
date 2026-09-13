@@ -3,129 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kuhinoor — Pinterest Aesthetic Moodboard</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Aesthetic Universe | Kuhinoor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #05050a;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Background Glows */
+        .glow-sphere {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            filter: blur(120px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .sphere-2 {
+            top: 60%;
+            right: -10%;
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); }
+            100% { transform: translateY(-50px) scale(1.1); }
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(to right, #fff, #a5b4fc, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            color: #9ca3af;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .card p {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a5b4fc;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
+    <div class="glow-sphere"></div>
+    <div class="glow-sphere sphere-2"></div>
 
     <header>
         <h1>Project: Kuhinoor</h1>
-        <p>A curated high-end visual board, styled with Pinterest masonry aesthetics.</p>
+        <p>An extraordinary space built with cleaner design, smooth glassmorphism, and modern code.</p>
     </header>
 
-    <main class="pinterest-grid">
-        
-        <!-- Pin 1 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Overview</span>
-                <img src="Screenshot 2026-09-12 103349.png" alt="Project Kuhinoor">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">Project: kuhinoor</h3>
-                    <p class="pin-desc">A simple website for a completely extraordinary person.</p>
-                </div>
-            </div>
+    <div class="container">
+        <div class="card">
+            <span class="badge">Elegance</span>
+            <h3>Estrange Bond</h3>
+            <p>"They told me to practice my coding, so I decided to build something actually worth looking at—reimagined."</p>
         </div>
 
-        <!-- Pin 2 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Connection</span>
-                <img src="Screenshot 2026-09-12 103408.png" alt="Estrange Bond">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">Estrange Bond</h3>
-                    <p class="pin-desc">"They told me to practice my coding, so I decided to build something actually worth looking at."</p>
-                </div>
-            </div>
+        <div class="card">
+            <span class="badge">Vibe</span>
+            <h3>Magnetic Word</h3>
+            <p>"Because a simple text message just didn't feel extra enough for someone this unique."</p>
         </div>
 
-        <!-- Pin 3 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Vibe</span>
-                <img src="Screenshot 2026-09-12 103425.png" alt="Magnetic Word">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Magnetic Word"</h3>
-                    <p class="pin-desc">"Because a simple text message just didn't feel extra enough for you."</p>
-                </div>
-            </div>
+        <div class="card">
+            <span class="badge">Memory</span>
+            <h3>Last Trace Of Us</h3>
+            <p>No pen, no paper... but some impressions always manage to stay forever.</p>
         </div>
 
-        <!-- Pin 4 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Memory</span>
-                <img src="Screenshot 2026-09-12 103434.png" alt="Last Trace Of Us">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Last Trace Of Us"</h3>
-                    <p class="pin-desc">No pen, no paper... but, you still draw my attention.</p>
-                </div>
-            </div>
+        <div class="card">
+            <span class="badge">Brightness</span>
+            <h3>Strings of Sweetness</h3>
+            <p>"Just a little reminder of how much brighter things get whenever good energy is around."</p>
         </div>
 
-        <!-- Pin 5 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Aura</span>
-                <img src="Screenshot 2026-09-12 103446.png" alt="Strings of Sweetness">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Strings of Sweetness"</h3>
-                    <p class="pin-desc">"Just a little reminder of how much brighter things get whenever you're around."</p>
-                </div>
-            </div>
+        <div class="card">
+            <span class="badge">Aura</span>
+            <h3>Breathless Beginnings</h3>
+            <p>"Because someone wonderful deserves a lot more than just a standard compliment."</p>
         </div>
 
-        <!-- Pin 6 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Beginning</span>
-                <img src="Screenshot 2026-09-12 103455.png" alt="Breathless Beginnings">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Breathless Beginnings"</h3>
-                    <p class="pin-desc">"Because someone as wonderful as you deserves a little more than just a standard compliment."</p>
-                </div>
-            </div>
+        <div class="card">
+            <span class="badge">Focus</span>
+            <h3>Centered On You</h3>
+            <p>"Just a few thoughts crafted into lines of clean pixels and code."</p>
         </div>
+    </div>
 
-        <!-- Pin 7 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Focus</span>
-                <img src="Screenshot 2026-09-12 103508.png" alt="Centered On You">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Centered On You"</h3>
-                    <p class="pin-desc">"Just a few thoughts about my favorite human."</p>
-                </div>
-            </div>
-        </div>
+    <footer>
+        <p>Designed with cleaner code, better aesthetics, and absolute precision. ✨</p>
+    </footer>
 
-        <!-- Pin 8 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Space</span>
-                <img src="Screenshot 2026-09-12 103521.png" alt="A Little Space For You">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"A Little Space For You"</h3>
-                    <p class="pin-desc">"Because you're worth a lot more than just a quick mention."</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Pin 9 -->
-        <div class="pin-card">
-            <div class="pin-image-wrapper">
-                <span class="pin-badge">Journey</span>
-                <img src="Screenshot 2026-09-12 103539.png" alt="Endless Journey">
-                <div class="pin-overlay">
-                    <h3 class="pin-title">"Endless Journey"</h3>
-                    <p class="pin-desc">"A journey is best measured in friends rather than miles."</p>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
+    <script>
+        // Simple interactive tilt or cursor responsiveness effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
 </body>
 </html>
