@@ -3,216 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aesthetic Universe | Kuhinoor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        body {
-            background-color: #05050a;
-            color: #f3f4f6;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        /* Background Glows */
-        .glow-sphere {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            filter: blur(120px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.2;
-            animation: float 10s ease-in-out infinite alternate;
-        }
-
-        .sphere-2 {
-            top: 60%;
-            right: -10%;
-            background: linear-gradient(135deg, #ec4899, #8b5cf6);
-            animation-delay: -5s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) scale(1); }
-            100% { transform: translateY(-50px) scale(1.1); }
-        }
-
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
-
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #fff, #a5b4fc, #f472b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        header p {
-            color: #9ca3af;
-            font-size: 1.1rem;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-bottom: 80px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(168, 85, 247, 0.4);
-            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .card p {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .badge {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #a5b4fc;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 5px 12px;
-            border-radius: 20px;
-            margin-bottom: 15px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #6b7280;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.2rem; }
-        }
-    </style>
+    <title>Kuhinoor — The Masterpiece</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="glow-sphere"></div>
-    <div class="glow-sphere sphere-2"></div>
+    <div class="ambient-overlay"></div>
 
-    <header>
-        <h1>Project: Kuhinoor</h1>
-        <p>An extraordinary space built with cleaner design, smooth glassmorphism, and modern code.</p>
-    </header>
-
-    <div class="container">
-        <div class="card">
-            <span class="badge">Elegance</span>
-            <h3>Estrange Bond</h3>
-            <p>"They told me to practice my coding, so I decided to build something actually worth looking at—reimagined."</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">Vibe</span>
-            <h3>Magnetic Word</h3>
-            <p>"Because a simple text message just didn't feel extra enough for someone this unique."</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">Memory</span>
-            <h3>Last Trace Of Us</h3>
-            <p>No pen, no paper... but some impressions always manage to stay forever.</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">Brightness</span>
-            <h3>Strings of Sweetness</h3>
-            <p>"Just a little reminder of how much brighter things get whenever good energy is around."</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">Aura</span>
-            <h3>Breathless Beginnings</h3>
-            <p>"Because someone wonderful deserves a lot more than just a standard compliment."</p>
-        </div>
-
-        <div class="card">
-            <span class="badge">Focus</span>
-            <h3>Centered On You</h3>
-            <p>"Just a few thoughts crafted into lines of clean pixels and code."</p>
-        </div>
-    </div>
-
-    <footer>
-        <p>Designed with cleaner code, better aesthetics, and absolute precision. ✨</p>
-    </footer>
-
-    <script>
-        // Simple interactive tilt or cursor responsiveness effect
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-            });
-        });
-    </script>
+    <main>
+        <ul class='slider'>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103349.png')">
+            <div class='content'>
+              <span class="tag">The Masterpiece</span>
+              <h2 class='title'>Project: Kuhinoor</h2>
+              <p class='description'>A stunning digital creation dedicated to someone completely rare, extraordinary, and utterly mesmerizing.</p>
+              <button>Explore Aura</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103408.png')">
+            <div class='content'>
+              <span class="tag">Magnetic Connection</span>
+              <h2 class='title'>Estrange Bond</h2>
+              <p class='description'>"They told me to practice my coding, so I built an entire universe just to capture how breathtaking you are."</p>
+              <button>Feel The Vibe</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103425.png')">
+            <div class='content'>
+              <span class="tag">Addictive Presence</span>
+              <h2 class='title'>"Magnetic Word"</h2>
+              <p class='description'>"Because a standard text message could never match the gravity and elegance of your presence."</p>
+              <button>Unlock Magic</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103434.png')">
+            <div class='content'>
+              <span class="tag">Unmatched Focus</span>
+              <h2 class='title'>"Last Trace Of Us"</h2>
+              <p class='description'>No pen, no paper... but your shadow lingers in every single line of my thoughts and pixels.</p>
+              <button>Dive Deep</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103446.png')">
+            <div class='content'>
+              <span class="tag">Pure Radiance</span>
+              <h2 class='title'>"Strings of Sweetness"</h2>
+              <p class='description'>"A gentle reminder of how effortlessly your light makes everything else in the room look completely dim."</p>
+              <button>Feel The Warmth</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103455.png')">
+            <div class='content'>
+              <span class="tag">Absolute Perfection</span>
+              <h2 class='title'>"Breathless Beginnings"</h2>
+              <p class='description'>"Someone as dangerously gorgeous and wonderful as you deserves a lot more than just ordinary compliments."</p>
+              <button>Savor The Moment</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103508.png')">
+            <div class='content'>
+              <span class="tag">Main Character Energy</span>
+              <h2 class='title'>"Centered On You"</h2>
+              <p class='description'>"Every single line of code, every thought, every heartbeat—completely orbiting around my favorite human."</p>
+              <button>Stay Close</button>
+            </div>
+          </li>  
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103521.png')">
+            <div class='content'>
+              <span class="tag">Exclusive Space</span>
+              <h2 class='title'>"A Little Space For You"</h2>
+              <p class='description'>"Because you are worth infinitely more than a passing glance or a fleeting mention in this busy world."</p>
+              <button>Enter Sanctuary</button>
+            </div>
+          </li>
+          <li class='item' style="background-image: url('Screenshot 2026-09-12 103539.png')">
+            <div class='content'>
+              <span class="tag">Infinite Horizon</span>
+              <h2 class='title'>"Endless Journey"</h2>
+              <p class='description'>"Some connections aren't measured in distance; they are measured in the magic of being close to you."</p>
+              <button>Go Further</button>
+            </div>
+          </li>
+        </ul>
+        <nav class='nav'>
+          <ion-icon class='btn prev' name="arrow-back-outline"></ion-icon>
+          <ion-icon class='btn next' name="arrow-forward-outline"></ion-icon>
+        </nav>
+      </main>
+      
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
