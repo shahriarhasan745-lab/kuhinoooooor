@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,200 +8,143 @@
 }
 
 body {
-    background: #030307;
-    color: #fff;
-    overflow: hidden;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: #0b0b0f;
+    color: #f3f4f6;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Background Atmospheric Glows */
-body::before, body::after {
-    content: '';
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    filter: blur(140px);
+/* Subtle Ambient Background Lighting */
+.ambient-glow {
+    position: fixed;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(236, 72, 153, 0.05) 50%, transparent 80%);
+    filter: blur(80px);
     z-index: -1;
-    opacity: 0.15;
-}
-body::before {
-    background: #6366f1;
-    top: -10%;
-    left: -10%;
-}
-body::after {
-    background: #ec4899;
-    bottom: -10%;
-    right: -10%;
+    pointer-events: none;
 }
 
-main {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 30px 50px rgba(0,0,0,0.6);
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
 }
 
-.slider {
-    position: absolute;
-    inset: 0;
-    list-style: none;
-}
-
-.item {
-    position: absolute;
-    width: 220px;
-    height: 320px;
-    top: 50%;
-    transform: translateY(-50%);
-    left: max(60vw, 500px);
-    background-size: cover;
-    background-position: center;
-    border-radius: 24px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-    transition: 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-    filter: brightness(0.8);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* First active item styling */
-.item:nth-child(1),
-.item:nth-child(2) {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    transform: translateY(0);
-    border-radius: 0;
-    box-shadow: none;
-    filter: brightness(1);
-    border: none;
-}
-
-/* Carousel Item Layout Stack for Next Cards */
-.item:nth-child(3) { left: calc(60vw + 240px); }
-.item:nth-child(4) { left: calc(60vw + 480px); }
-.item:nth-child(5) { left: calc(60vw + 720px); }
-.item:nth-child(6) { left: calc(60vw + 960px); opacity: 0; pointer-events: none; }
-.item:nth-child(n+7) { left: calc(60vw + 1200px); opacity: 0; pointer-events: none; }
-
-/* Content Box Styling (Glassmorphism) */
-.item .content {
-    position: absolute;
-    top: 50%;
-    left: 80px;
-    width: 460px;
-    transform: translateY(-50%);
-    text-align: left;
-    display: none;
-    background: rgba(10, 10, 20, 0.65);
-    padding: 40px;
-    border-radius: 24px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    animation: fadeInContent 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.item:nth-child(2) .content {
-    display: block;
-}
-
-@keyframes fadeInContent {
-    from {
-        opacity: 0;
-        transform: translateY(-40%);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(-50%);
-    }
-}
-
-.content .title {
-    font-size: 2.4rem;
+header h1 {
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 15px;
-    background: linear-gradient(to right, #fff, #c7d2fe, #f472b6);
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 70%, #f472b6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    letter-spacing: -0.5px;
+    margin-bottom: 8px;
 }
 
-.content .description {
-    line-height: 1.7;
-    color: #cbd5e1;
-    font-size: 1.05rem;
-    margin-bottom: 25px;
+header p {
+    color: #9ca3af;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
-.content button {
-    padding: 12px 28px;
-    border: none;
-    background: linear-gradient(135deg, #6366f1, #a855f7);
-    color: white;
-    border-radius: 50px;
-    font-weight: 600;
+/* Pinterest Style Masonry Grid Container */
+.pinterest-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 20px 30px 80px;
+    column-count: 3;
+    column-gap: 24px;
+}
+
+@media (max-width: 1024px) {
+    .pinterest-grid { column-count: 2; }
+}
+@media (max-width: 640px) {
+    .pinterest-grid { column-count: 1; padding: 10px 15px 50px; }
+}
+
+/* Pin Card Styling */
+.pin-card {
+    break-inside: avoid;
+    margin-bottom: 24px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #14141f;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-.content button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 15px 25px rgba(168, 85, 247, 0.4);
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
+.pin-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+    border-color: rgba(168, 85, 247, 0.3);
 }
 
-/* Navigation Buttons */
-.nav {
+.pin-image-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.pin-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pin-card:hover img {
+    transform: scale(1.04);
+}
+
+/* Pinterest Style Overlay on Hover */
+.pin-overlay {
     position: absolute;
-    bottom: 40px;
-    right: 80px;
+    inset: 0;
+    background: linear-gradient(to top, rgba(5, 5, 10, 0.85) 0%, rgba(5, 5, 10, 0.2) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
     display: flex;
-    gap: 15px;
-    z-index: 10;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
 }
 
-.nav .btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+.pin-card:hover .pin-overlay {
+    opacity: 1;
+}
+
+.pin-title {
+    font-size: 1.15rem;
+    font-weight: 600;
     color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    font-size: 20px;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+}
+
+.pin-desc {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.pin-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(10, 10, 20, 0.6);
     backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.nav .btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.4);
-    transform: scale(1.05);
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
-    .item .content {
-        left: 20px;
-        width: calc(100% - 40px);
-        padding: 25px;
-    }
-    .content .title {
-        font-size: 1.8rem;
-    }
-    .nav {
-        right: 20px;
-        bottom: 20px;
-    }
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 5px 12px;
+    border-radius: 30px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #c7d2fe;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
